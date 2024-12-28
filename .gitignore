@@ -10,6 +10,9 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+nodemon.json
+/backend/images/*
+
 
 # IDEs and editors
 .idea/

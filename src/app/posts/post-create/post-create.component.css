@@ -1,0 +1,24 @@
+mat-card {
+  padding: 20px;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+mat-spinner {
+  margin: auto;
+}
+
+button {
+  width: fit-content;
+}
+
+.image-preview {
+  height: 2rem;
+  margin: 1rem 0;
+}
+
+.image-preview {
+  height: 100%;
+}

@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <span>
+    <a mat-button routerLink="/"> My Messages </a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    @if (userIsAuthenticated()) {
+    <li>
+      <a mat-button routerLink="/create" routerLinkActive="active"
+        >Create Post</a
+      >
+    </li>
+    } @if (!userIsAuthenticated()) {
+    <li>
+      <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/signup" routerLinkActive="active">Sign Up</a>
+    </li>
+    } @if (userIsAuthenticated()) {
+    <li>
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+    }
+  </ul>
+</mat-toolbar>

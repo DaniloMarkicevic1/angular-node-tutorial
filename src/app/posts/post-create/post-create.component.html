@@ -1,0 +1,57 @@
+<mat-card>
+  @if (isLoading()) {
+  <mat-spinner />
+  } @if(!isLoading()){
+  <form [formGroup]="form" (submit)="onSavePost()">
+    <mat-form-field>
+      <mat-label>Post Title</mat-label>
+      <input
+        type="text"
+        matInput
+        name="title"
+        placeholder="Post Title"
+        formControlName="title"
+      />
+      <!-- @if (form.get('title')?.invalid){
+      <mat-error>Please enter post title.</mat-error>
+      } -->
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Post Content</mat-label>
+      <textarea
+        name="content"
+        rows="6"
+        matInput
+        placeholder="Post Content"
+        formControlName="content"
+      ></textarea>
+      @if (form.get('content')?.invalid){
+      <mat-error>Please enter post content.</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-flat-button (click)="filePicker.click()" type="button">
+      Add Image
+    </button>
+    <input
+      hidden
+      name="add-file"
+      type="file"
+      required
+      #filePicker
+      (change)="onImagePicked($event)"
+    />
+    @if(imagePreview() !== '' && imagePreview() && form.get('image')?.valid ){
+    <div class="image-preview">
+      <img [src]="[imagePreview()]" />
+    </div>
+    } @if (form.get('image')?.invalid && form.get('image')?.dirty) {
+    <mat-error>Please enter Image.</mat-error>
+    }
+    <hr />
+    <button id="add-post" mat-raised-button type="submit">
+      @if(mode() === 'create'){ Add Post } @else { Edit Post }
+    </button>
+  </form>
+  }
+</mat-card>

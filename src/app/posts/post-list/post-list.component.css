@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+}
+mat-expansion-panel-header {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.info-text {
+  text-align: center;
+}
+
+p {
+  color: grey;
+}
+
+mat-spinner {
+  margin: auto;
+}

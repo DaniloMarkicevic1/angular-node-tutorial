@@ -1,0 +1,38 @@
+@if (isLoading()) {
+<mat-spinner />
+} @if (postData().posts.length > 0 && !isLoading()) {
+<mat-accordion>
+  @for (post of postData().posts; track $index) {
+  <mat-expansion-panel>
+    <mat-expansion-panel-header> {{ post.title }} </mat-expansion-panel-header>
+
+    <p>{{ post.content }}</p>
+    <div>
+      <img [src]="post.imagePath" [alt]="post.title" />
+    </div>
+    <p>{{ userId() }}</p>
+    <p>{{ post.creator }}</p>
+    @if(userIsAuthenthicated() && userId() === post.creator){
+    <mat-action-row>
+      <a mat-button color="accent" [routerLink]="['/edit', post.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(post.id)">
+        DELETE
+      </button> </mat-action-row
+    >}
+  </mat-expansion-panel>
+  }
+</mat-accordion>
+} @if(postData().posts.length <= 0 && !isLoading){
+<p class="info-text mat-body-1">No posts added yet!</p>
+} @if (postData().posts.length > 0 ){
+<mat-paginator
+  [disabled]="isDisabled()"
+  [length]="postData().maxPosts"
+  [pageSize]="postsPerPage()"
+  [pageSizeOptions]="pageSizeOptions()"
+  aria-label="Select page"
+  (page)="onChangedPage($event)"
+>
+</mat-paginator>
+<button (click)="onClick()">Click me!</button>
+}
